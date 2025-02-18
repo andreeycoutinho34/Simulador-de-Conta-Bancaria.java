@@ -2,6 +2,6 @@ Este projeto é um simples simulador de conta bancária escrito em Java. Ele per
 
 Foram adicionadas novas funcionalidades ao código:
 
-- Agora o codigo pode interagir com o usuario via entrada de dados
+- Agora o codigo pode interagir com o usuario via entrada de dados.
 - Implementação de um menu interativo, permitindo que o usuário navegue pelas opções utilizando o teclado numérico.
 - Inclusão da opção Câmbio, que abre um submenu com três moedas predefinidas, permitindo ao usuário escolher para qual moeda deseja converter seu saldo.
