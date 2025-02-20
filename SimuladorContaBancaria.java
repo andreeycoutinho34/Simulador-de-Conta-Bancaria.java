@@ -1,7 +1,9 @@
+//usa o import para importar a biblioteca Scanner
 import java.util.Scanner;
 
 class ContaBancaria {
 
+    //Atributos da ContaBancaria
     private String titular;
     private String cpf;
     private double saldo;
@@ -12,11 +14,13 @@ class ContaBancaria {
         this.saldo = 0.0;
     }
 
+    //Métodos da ContaBancaria
     public void depositar(double valor) {
         saldo += valor;
         System.out.println("Depósito realizado com sucesso!");
     }
-
+    
+    //Método para realizar o saque
     public void sacar(double valor) {
         if (saldo >= valor) {
             saldo -= valor;
@@ -26,6 +30,7 @@ class ContaBancaria {
         }
     }
 
+    //Método para realizar o cambio
     public void cambio(double valor, double taxa, String moeda) {
         double conversao = valor * taxa;
 
@@ -38,13 +43,16 @@ class ContaBancaria {
         }
     }
 
+    //Método para mostrar o saldo
     public void mostrarSaldo() {
         System.out.println("Saldo de " + titular + " (CPF: " + cpf + "): R$" + saldo);
     }
 }
 
+//Classe SimuladorContaBancaria
 public class SimuladorContaBancaria {
 
+    //Método principal
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -57,7 +65,7 @@ public class SimuladorContaBancaria {
         ContaBancaria conta = new ContaBancaria(titular, cpf);
 
         int opcao;
-
+        //Cria um menu de opcoes para o usuario
         do {
             System.out.println("\nEscolha uma opção:");
             System.out.println("1. Mostrar Saldo");
@@ -68,6 +76,7 @@ public class SimuladorContaBancaria {
             System.out.print("Opção: ");
             opcao = scanner.nextInt();
 
+            //Executa a opcao escolhida pelo usuario
             switch (opcao) {
                 case 1:
                     conta.mostrarSaldo();
@@ -93,22 +102,28 @@ public class SimuladorContaBancaria {
             }
         } while (opcao != 5);
 
+        //Fecha o Scanner após o uso
         scanner.close();
     }
 
+    //Método para realizar o cambio
     public static void realizarCambio(Scanner scanner, ContaBancaria conta) {
+
+        //cria um sub menu para o usuario escolher a moeda
         System.out.println("\nEscolha a moeda para câmbio:");
         System.out.println("1 - Dólar (USD) - Taxa R$5.69");
         System.out.println("2 - Euro (EUR) - Taxa R$5.94");
         System.out.println("3 - Libra (GBP) - Taxa R$7.16");
         System.out.println("4 - Sair");
-
+        
+        //Recebe a opcao escolhida
         System.out.print("Opção: ");
         int escolha = scanner.nextInt();
 
         double taxa = 0;
         String moeda = "";
 
+        //Define a taxa e a moeda de acordo com a opcao escolhida
         switch (escolha) {
             case 1:
                 taxa = 0.18;
@@ -130,9 +145,11 @@ public class SimuladorContaBancaria {
                 return;
         }
 
+        //Recebe o valor para realizar o cambio
         System.out.print("Digite o valor para realizar o câmbio: ");
         double valor = scanner.nextDouble();
 
+        //Realiza o cambio
         conta.cambio(valor, taxa, moeda);
     }
 }
